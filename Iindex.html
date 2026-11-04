@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Política de privacidad de Mnesis, diario personal de voz para Android.">
+<title>Política de privacidad de Mnesis</title>
+<style>
+:root{--wine:#5c1834;--ink:#29252a;--muted:#6d6670;--bg:#f5f2f4}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:860px;margin:40px auto;padding:42px 48px;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(40,20,30,.08)}
+.brand{text-align:center;letter-spacing:.22em;color:var(--wine);font-weight:800}h1{text-align:center;color:var(--wine);font-size:2rem}
+.updated,.meta{text-align:center;color:var(--muted);margin-bottom:1.5em}h2{color:var(--wine);font-size:1.2rem;margin:1.8em 0 .5em}
+p{margin:.55em 0}footer{margin-top:2.5em;padding-top:1em;border-top:1px solid #eee;color:var(--muted);font-size:.9rem}
+@media(max-width:600px){main{margin:0;padding:26px 20px;border-radius:0}h1{font-size:1.65rem}}
+</style></head><body><main><div class="brand">MNESIS</div><h1>Política de privacidad</h1>
+<div class="updated">Última actualización: 4 de noviembre de 2026</div>
+<div class="meta"><strong>Responsable:</strong> RonnDu Corp. · Ecuador<br><strong>Contacto:</strong> <a href="mailto:ronnducorp.android@gmail.com">ronnducorp.android@gmail.com</a></div>
+<h2>1. Responsable y alcance</h2>
+<p>Mnesis es una aplicación Android de diario personal por voz. El responsable de la aplicación es RonnDu Corp., con sede en Ecuador. Para consultas sobre privacidad o tratamiento de datos, escribe a ronnducorp.android@gmail.com.</p>
+<p>Esta política describe el tratamiento realizado por la versión Android de Mnesis preparada para su lanzamiento. Debe actualizarse si se incorporan servicios, SDK, analítica, publicidad, sincronización o funciones que cambien el flujo de datos.</p>
+<h2>2. Datos que Mnesis trata</h2>
+<p>Contenido del diario: grabaciones de audio que el usuario decide realizar, texto transcrito o editado y datos asociados a cada entrada, como fecha, hora, duración e identificador interno.</p>
+<p>Datos de seguridad local: el PIN de acceso se transforma en un resumen SHA-256 y se guarda en preferencias cifradas. También se guardan localmente los intentos fallidos y el tiempo de bloqueo. La clave de cifrado de la base de datos se genera en el dispositivo y se protege mediante mecanismos de Android Keystore.</p>
+<p>Datos biométricos: si el usuario elige desbloquear mediante biometría o credencial del dispositivo, la autenticación se realiza mediante Android BiometricPrompt. Mnesis recibe el resultado de autenticación; la aplicación no recibe ni almacena la huella, imagen facial ni plantilla biométrica.</p>
+<p>Permiso de micrófono: se solicita cuando el usuario inicia una grabación. El micrófono se utiliza para capturar la nota de voz solicitada.</p>
+<h2>3. Dónde se almacenan los datos</h2>
+<p>Las entradas del diario se guardan en una base de datos local del espacio privado de Mnesis en el dispositivo (Room con SQLCipher). Las grabaciones guardadas se almacenan en el espacio privado de la aplicación y se cifran con AES-256-GCM.</p>
+<p>Durante la grabación, Android MediaRecorder necesita crear temporalmente un archivo de audio sin cifrar en la caché privada de la aplicación. Mnesis lo lee, lo cifra para su almacenamiento definitivo y elimina el archivo temporal. Para reproducir audio, la aplicación crea temporalmente una copia descifrada en la caché privada y la elimina al finalizar el flujo normal; los restos temporales se limpian al iniciar la aplicación.</p>
+<p>El modelo de reconocimiento de voz Vosk se descarga al almacenamiento privado de la aplicación. No es una base de datos de usuarios ni un servicio de sincronización.</p>
+<p>Mnesis no incluye en esta versión un servidor propio, una cuenta de usuario, una base de datos en la nube ni una función de sincronización remota. El desarrollador no recibe automáticamente el contenido del diario.</p>
+<h2>4. Transcripción y comunicaciones de red</h2>
+<p>La transcripción se realiza en el propio dispositivo mediante el motor Vosk y el modelo de idioma español descargado. Las grabaciones y los textos del diario no se envían al servidor desde el flujo de transcripción implementado en esta versión.</p>
+<p>Para obtener el modelo de idioma, la aplicación realiza una conexión HTTPS al servidor alphacephei.com y descarga el archivo del modelo Vosk. Como en cualquier conexión web, el servidor o los intermediarios de red pueden recibir datos técnicos de conexión, como la dirección IP, fecha y hora de la solicitud y datos técnicos de red. El tratamiento de esos datos por el proveedor se rige por sus propias políticas.</p>
+<p>El modelo descargado puede utilizarse localmente después de la descarga. La aplicación no necesita enviar audio a alphacephei.com para transcribirlo.</p>
+<h2>5. Copias de seguridad y exportaciones</h2>
+<p>Mnesis permite crear y restaurar copias de seguridad que el usuario inicia. La copia se cifra con una contraseña elegida por el usuario mediante PBKDF2-HMAC-SHA256 y AES-256-GCM.</p>
+<p>La aplicación entrega el archivo mediante el selector de documentos de Android. El usuario decide dónde guardarlo o desde dónde restaurarlo, por ejemplo en el almacenamiento del dispositivo o en un proveedor de nube que haya elegido. Mnesis no carga por sí misma esa copia a una nube ni controla las prácticas del proveedor elegido.</p>
+<p>Quien tenga el archivo de copia y su contraseña podría acceder a su contenido. El usuario debe conservar la contraseña y proteger el archivo.</p>
+<h2>6. Finalidades</h2>
+<p>Mnesis trata el contenido del diario para permitir grabar, reproducir, transcribir, mostrar, buscar, editar, exportar y restaurar las entradas solicitadas por el usuario; y trata los datos de seguridad local para proteger el acceso a la aplicación y a sus datos.</p>
+<p>El permiso de micrófono se utiliza cuando el usuario inicia una grabación. La conexión a Internet se utiliza para descargar el modelo de voz.</p>
+<h2>7. Compartición y venta de datos</h2>
+<p>En la versión descrita por esta política, Mnesis no incorpora publicidad ni analítica propia, cuentas en línea o una función que comparta las grabaciones o textos del diario con el desarrollador. El contenido del diario no se vende ni se comparte con terceros desde la aplicación.</p>
+<p>La descarga del modelo implica comunicación con alphacephei.com, como se explica en la sección 4. Los archivos que el usuario exporte y entregue voluntariamente a otros servicios quedan sujetos a las condiciones de esos servicios.</p>
+<h2>8. Conservación y eliminación</h2>
+<p>Las entradas y grabaciones permanecen en el dispositivo hasta que el usuario las elimina desde Mnesis, borra los datos de la aplicación o desinstala la aplicación, sujeto al comportamiento del sistema operativo y a las copias que el usuario haya creado fuera de Mnesis.</p>
+<p>El usuario puede eliminar entradas individuales desde la aplicación. Para eliminar los datos locales de Mnesis, puede utilizar las opciones de Android para borrar los datos de la aplicación o desinstalarla. Las copias exportadas fuera de la aplicación deben eliminarse por separado desde la ubicación donde se guardaron.</p>
+<p>Mnesis no mantiene una copia remota del diario que el desarrollador pueda borrar, porque esta versión no implementa almacenamiento remoto del contenido.</p>
+<h2>9. Seguridad</h2>
+<p>Mnesis utiliza SQLCipher para cifrar la base de datos, AES-256-GCM para cifrar los archivos de audio guardados y preferencias protegidas por Android Keystore para guardar secretos locales. Las copias de seguridad exportadas utilizan cifrado autenticado AES-256-GCM con una clave derivada de la contraseña.</p>
+<p>Ningún método de almacenamiento o transmisión puede garantizar seguridad absoluta. El usuario debe mantener actualizado Android, proteger el dispositivo y elegir una contraseña robusta para las copias de seguridad.</p>
+<h2>10. Menores</h2>
+<p>Mnesis no está diseñada específicamente para niños. Si el responsable conoce que se han tratado datos de un menor de una forma que incumple la legislación aplicable, tomará medidas razonables para atender la situación.</p>
+<h2>11. Cambios en esta política</h2>
+<p>Esta política puede actualizarse cuando cambien las funciones de Mnesis, sus dependencias o las obligaciones legales. La versión vigente se publicará en la misma dirección web e indicará su fecha de actualización.</p>
+<h2>12. Contacto</h2>
+<p>Para consultas, solicitudes o dudas sobre privacidad, contacta con RonnDu Corp., Ecuador, en ronnducorp.android@gmail.com.</p>
+<footer>Política de privacidad de Mnesis para Android.</footer></main></body></html>
